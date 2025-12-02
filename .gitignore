@@ -1,0 +1,13 @@
+# Environment variables
+.env
+
+# Google credentials
+data-project-480008-44a8e103d70b.json
+*.json
+
+# Python stuff
+__pycache__/
+*.pyc
+
+# virtual environment
+venv/   

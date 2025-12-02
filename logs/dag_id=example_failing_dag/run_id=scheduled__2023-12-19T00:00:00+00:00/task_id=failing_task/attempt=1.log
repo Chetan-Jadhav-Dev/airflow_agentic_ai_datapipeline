@@ -1,0 +1,23 @@
+[2025-12-02T13:43:54.225+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: example_failing_dag.failing_task scheduled__2023-12-19T00:00:00+00:00 [queued]>
+[2025-12-02T13:43:54.235+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: example_failing_dag.failing_task scheduled__2023-12-19T00:00:00+00:00 [queued]>
+[2025-12-02T13:43:54.235+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-12-02T13:43:54.252+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): failing_task> on 2023-12-19 00:00:00+00:00
+[2025-12-02T13:43:54.257+0000] {standard_task_runner.py:57} INFO - Started process 2208 to run task
+[2025-12-02T13:43:54.260+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'example_failing_dag', 'failing_task', 'scheduled__2023-12-19T00:00:00+00:00', '--job-id', '689', '--raw', '--subdir', 'DAGS_FOLDER/example_failing_dag.py', '--cfg-path', '/tmp/tmp5nukcido']
+[2025-12-02T13:43:54.265+0000] {standard_task_runner.py:85} INFO - Job 689: Subtask failing_task
+[2025-12-02T13:43:54.284+0000] {logging_mixin.py:154} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-02T13:43:54.309+0000] {task_command.py:416} INFO - Running <TaskInstance: example_failing_dag.failing_task scheduled__2023-12-19T00:00:00+00:00 [running]> on host d4682a01bea6
+[2025-12-02T13:43:54.371+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='example_failing_dag' AIRFLOW_CTX_TASK_ID='failing_task' AIRFLOW_CTX_EXECUTION_DATE='2023-12-19T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-19T00:00:00+00:00'
+[2025-12-02T13:43:54.371+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/example_failing_dag.py", line 16, in failing_task
+    raise Exception("This is a simulated failure for testing the AI Troubleshooter.")
+Exception: This is a simulated failure for testing the AI Troubleshooter.
+[2025-12-02T13:43:54.376+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=example_failing_dag, task_id=failing_task, execution_date=20231219T000000, start_date=20251202T134354, end_date=20251202T134354
+[2025-12-02T13:43:54.381+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 689 for task failing_task (This is a simulated failure for testing the AI Troubleshooter.; 2208)
+[2025-12-02T13:43:54.398+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-12-02T13:43:54.410+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

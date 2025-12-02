@@ -4,7 +4,7 @@
 if [ ! -f .env ]; then
     echo "Creating .env file..."
     touch .env
-    echo "AIRFLOW_URL=http://localhost:8080" >> .env
+    echo "AIRFLOW_URL=http://localhost:8081" >> .env
     echo "AIRFLOW_USERNAME=admin" >> .env
     echo "AIRFLOW_PASSWORD=admin" >> .env
     echo "GOOGLE_APPLICATION_CREDENTIALS=path/to/your/credentials.json" >> .env
